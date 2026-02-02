@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MojeshBot • Chat</title>
+  <style>
+    :root{
+      --bg: #0b1220;
+      --panel: rgba(255,255,255,0.06);
+      --panel-2: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.62);
+      --border: rgba(255,255,255,0.10);
+      --accent: #7c3aed; /* purple */
+      --accent-2:#22c55e; /* green */
+      --shadow: 0 20px 60px rgba(0,0,0,0.45);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(800px 500px at 10% 10%, rgba(124,58,237,0.20), transparent 60%),
+        radial-gradient(900px 600px at 90% 20%, rgba(34,197,94,0.16), transparent 55%),
+        radial-gradient(700px 500px at 50% 90%, rgba(59,130,246,0.16), transparent 60%),
+        var(--bg);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 24px;
+    }
+
+    .app{
+      width: min(980px, 100%);
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap: 18px;
+    }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      overflow:hidden;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      padding: 18px;
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+    }
+    .logo{
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      font-weight: 800;
+      background: linear-gradient(135deg, rgba(124,58,237,0.9), rgba(34,197,94,0.75));
+      box-shadow: 0 10px 25px rgba(124,58,237,0.22);
+    }
+    .brand h1{
+      margin:0;
+      font-size: 16px;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
+    }
+    .brand p{
+      margin:2px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .tips{
+      padding: 14px 14px 10px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+    }
+    .tips h2{
+      margin:0 0 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.84);
+      letter-spacing: 0.2px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      margin: 0 8px 10px 0;
+      font-size: 12px;
+      color: rgba(255,255,255,0.82);
+      cursor: default;
+      user-select: none;
+    }
+    .muted{
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      margin: 6px 0 0;
+    }
+
+    /* Chat */
+    .chat{
+      display:flex;
+      flex-direction:column;
+      height: 72vh;
+      min-height: 520px;
+    }
+    .chat-header{
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      background: rgba(255,255,255,0.03);
+    }
+    .chat-header .title{
+      display:flex;
+      flex-direction:column;
+      gap: 2px;
+    }
+    .chat-header .title strong{
+      font-size: 14px;
+      letter-spacing: 0.2px;
+    }
+    .chat-header .title span{
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .status{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.80);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+    }
+    .dot{
+      width: 9px;
+      height: 9px;
+      border-radius: 99px;
+      background: var(--accent-2);
+      box-shadow: 0 0 0 6px rgba(34,197,94,0.14);
+    }
+
+    .messages{
+      flex:1;
+      padding: 18px;
+      overflow:auto;
+      scroll-behavior:smooth;
+    }
+
+    .empty{
+      margin-top: 30px;
+      text-align:center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .msg{
+      display:flex;
+      margin: 10px 0;
+      gap: 10px;
+      align-items:flex-end;
+      animation: fadeUp 140ms ease-out;
+    }
+    @keyframes fadeUp{
+      from{ opacity:0; transform: translateY(4px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    .avatar{
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      display:grid;
+      place-items:center;
+      color: rgba(255,255,255,0.88);
+      font-weight: 700;
+      font-size: 12px;
+      flex: 0 0 auto;
+    }
+
+    .bubble{
+      max-width: 74%;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      line-height: 1.35;
+      font-size: 13px;
+      color: rgba(255,255,255,0.92);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .meta{
+      font-size: 11px;
+      color: var(--muted);
+      margin: 4px 0 0 2px;
+    }
+
+    .msg.you{
+      justify-content:flex-end;
+    }
+    .msg.you .avatar{ display:none; }
+    .msg.you .bubble{
+      background: linear-gradient(135deg, rgba(124,58,237,0.34), rgba(124,58,237,0.16));
+      border-color: rgba(124,58,237,0.35);
+    }
+
+    /* Composer */
+    .composer{
+      border-top: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      padding: 12px;
+    }
+    form{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+    }
+    .input{
+      flex:1;
+      display:flex;
+      align-items:center;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      border-radius: 14px;
+      padding: 10px 12px;
+      gap: 10px;
+    }
+    input[type="text"]{
+      flex:1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-size: 14px;
+    }
+    input::placeholder{
+      color: rgba(255,255,255,0.40);
+    }
+    button{
+      border: none;
+      cursor: pointer;
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(124,58,237,1), rgba(59,130,246,0.9));
+      box-shadow: 0 14px 30px rgba(124,58,237,0.20);
+      transition: transform 0.08s ease, filter 0.08s ease;
+    }
+    button:active{ transform: translateY(1px); filter: brightness(0.95); }
+    .hint{
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 0 4px;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .app{ grid-template-columns: 1fr; }
+      .chat{ height: 78vh; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="card sidebar">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1>MojeshBot</h1>
+          <p>Placement / Interview Assistant</p>
+        </div>
+      </div>
+
+      <div class="tips">
+        <h2>Try asking</h2>
+        <div class="pill">tell me about yourself</div>
+        <div class="pill">what are your strengths</div>
+        <div class="pill">why should we hire you</div>
+        <div class="pill">difference between git and github</div>
+        <p class="muted">
+          Tip: Ask in your own words — fuzzy matching will find the closest answer from the FAQ.
+        </p>
+      </div>
+
+      <p class="muted">
+        Built with Python + Flask + RapidFuzz. <br />
+        (Chat resets when server restarts.)
+      </p>
+    </aside>
+
+    <!-- Chat -->
+    <main class="card chat">
+      <div class="chat-header">
+        <div class="title">
+          <strong>Chat</strong>
+          <span>Ask interview questions • Get quick answers</span>
+        </div>
+        <div class="status"><span class="dot"></span> Online</div>
+      </div>
+
+      <div class="messages" id="messages">
+        {% if not chat_history or chat_history|length == 0 %}
+          <div class="empty">
+            👋 Start by typing a question like <b>“tell me about yourself”</b>.
+          </div>
+        {% endif %}
+
+        {% for sender, message in chat_history %}
+          <div class="msg {% if sender == 'You' %}you{% endif %}">
+            {% if sender != 'You' %}
+              <div class="avatar">BOT</div>
+            {% endif %}
+            <div>
+              <div class="bubble">{{ message }}</div>
+              <div class="meta">{{ sender }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="composer">
+        <form method="post" autocomplete="off">
+          <div class="input">
+            <span style="color: rgba(255,255,255,0.55); font-weight:700;">✦</span>
+            <input type="text" name="message" placeholder="Type your question..." required />
+          </div>
+          <button type="submit">Send</button>
+        </form>
+        <div class="hint">Press Send to ask • Use clear keywords (e.g., “strengths”, “weakness”, “project”).</div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // auto-scroll to bottom on load
+    const el = document.getElementById("messages");
+    if (el) el.scrollTop = el.scrollHeight;
+  </script>
+</body>
+</html>

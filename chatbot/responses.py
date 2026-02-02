@@ -1,9 +1,9 @@
-def get_response(intent):
+def get_response(intent: str) -> str:
     responses = {
-        "greeting": "Hello! 👋 How can I help you?",
-        "how_are_you": "I'm doing great! Thanks for asking 😊",
-        "bye": "Goodbye! Have a nice day 🌟",
-        "unknown": "Sorry, I didn't understand that 🤔"
+        "greeting": "Hello! 👋 Ask me something.",
+        "bot_name": "I’m your chatbot 🤖 (made by Vivek).",
+        "help": "Try: 'hi', 'your name', 'bye'. We can add more skills next.",
+        "bye": "Goodbye! 👋",
+        "unknown": "I’m not sure yet. Try 'help' 🙂",
     }
-
-    return responses.get(intent)
+    return responses.get(intent, "I’m not sure yet. Try 'help' 🙂")

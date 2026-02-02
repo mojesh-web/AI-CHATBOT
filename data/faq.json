@@ -1,0 +1,118 @@
+[
+  {
+    "q": ["tell me about yourself", "introduce yourself", "self introduction", "about yourself"],
+    "a": "Sure! Use this structure: 1) Your name + education, 2) key skills (2–3), 3) 1–2 projects/internship with impact, 4) what role you're targeting, 5) why you're a fit. Keep it 60–90 seconds."
+  },
+  {
+    "q": ["what are your strengths", "your strengths", "strengths"],
+    "a": "Pick 2–3 strengths and prove them with examples. Example: 'Problem solving (fixed X bug in project), communication (presented to team), consistency (daily practice + improved).'"
+  },
+  {
+    "q": ["what are your weaknesses", "your weakness", "weakness"],
+    "a": "Choose a real but safe weakness + show improvement. Example: 'I used to hesitate to ask questions. Now I clarify early and summarize requirements to avoid mistakes.'"
+  },
+  {
+    "q": ["why should we hire you", "why hire you", "why you"],
+    "a": "Answer with: skills + proof + fit. Example: 'I match your JD in Python/Flask, built projects using it, and I learn fast. I can contribute quickly and grow with the team.'"
+  },
+  {
+    "q": ["why do you want this job", "why this job", "why join us"],
+    "a": "Show role interest + company interest. Example: 'I like backend development and your product impact. I want to work on real systems, learn best practices, and contribute long-term.'"
+  },
+  {
+    "q": ["where do you see yourself in 5 years", "5 years plan", "future plan"],
+    "a": "Keep it realistic: 'In 5 years, I want to become a strong engineer owning modules end-to-end, improving system design skills, and mentoring juniors.'"
+  },
+  {
+    "q": ["what is your expected salary", "salary expectation", "expected ctc"],
+    "a": "Best approach: 'I’m flexible and open to your standard range for this role. My priority is learning and growth. Based on market, I’d expect a fair offer aligned to my skills.'"
+  },
+  {
+    "q": ["can you work under pressure", "handle pressure", "stress"],
+    "a": "Say yes + example: 'Yes. I break tasks, prioritize, communicate early, and deliver. Example: completed project deadline by planning and daily milestones.'"
+  },
+  {
+    "q": ["are you willing to relocate", "relocation", "work location"],
+    "a": "If yes: 'Yes, I’m open to relocating.' If not: 'I prefer X location, but I’m open to discussing based on role requirements.'"
+  },
+  {
+    "q": ["are you a team player", "team player", "team work"],
+    "a": "Answer with example: 'Yes. In my project, I handled backend while coordinating with frontend. We used clear tasks and code reviews to deliver smoothly.'"
+  },
+  {
+    "q": ["tell me about your project", "project explanation", "your best project"],
+    "a": "Use STAR: Situation, Task, Action, Result. Mention tech stack, your role, challenges, and measurable outcomes (speed, accuracy, users, cost)."
+  },
+  {
+    "q": ["what are your hobbies", "hobbies", "interests"],
+    "a": "Pick honest, positive hobbies. Example: 'Coding small projects, learning tech, fitness, reading, cricket.' Mention what it teaches you (discipline, teamwork)."
+  },
+  {
+    "q": ["why did you choose this field", "why engineering", "why computer science"],
+    "a": "Connect curiosity + problem solving: 'I like building things and solving real problems. CS lets me create useful applications and keep learning.'"
+  },
+  {
+    "q": ["what motivates you", "motivation", "what inspires you"],
+    "a": "Mention growth + impact: 'Learning new skills, solving challenging problems, and seeing my work help users motivates me.'"
+  },
+  {
+    "q": ["tell me about a challenge you faced", "challenge faced", "difficult situation"],
+    "a": "Use STAR: explain the challenge, what you did, and the result. Keep it professional (project bug, deadline, teamwork issue)."
+  },
+  {
+    "q": ["what is oop", "object oriented programming", "define oop"],
+    "a": "OOP is a programming style based on objects and classes. Key concepts: Encapsulation, Inheritance, Polymorphism, Abstraction."
+  },
+  {
+    "q": ["what is python", "define python"],
+    "a": "Python is a high-level programming language known for readability. It’s used in web development, automation, data science, and AI."
+  },
+  {
+    "q": ["what is a database", "define database", "database meaning"],
+    "a": "A database is an organized collection of data that can be stored, retrieved, and updated efficiently (e.g., MySQL, PostgreSQL)."
+  },
+  {
+    "q": ["what is sql", "define sql", "sql meaning"],
+    "a": "SQL (Structured Query Language) is used to store, query, and manage data in relational databases."
+  },
+  {
+    "q": ["what is api", "define api", "api meaning"],
+    "a": "An API is a set of rules that lets software systems communicate. Example: a REST API lets a frontend request data from a backend."
+  },
+  {
+    "q": ["what is git", "define git", "git meaning"],
+    "a": "Git is a version control system used to track code changes, collaborate, and manage code history using commits and branches."
+  },
+  {
+    "q": ["difference between git and github", "git vs github", "git and github difference"],
+    "a": "Git is the tool for version control on your computer. GitHub is a platform to host Git repositories online for collaboration."
+  },
+  {
+    "q": ["what is a resume", "how to make resume", "resume tips"],
+    "a": "Keep it 1 page, highlight skills + projects + impact. Use numbers (e.g., improved accuracy by X%). Tailor it to the job description."
+  },
+  {
+    "q": ["hr interview questions", "common hr questions", "hr round"],
+    "a": "Common HR questions: Tell me about yourself, strengths/weakness, why this company, salary, relocation, teamwork, conflict handling."
+  },
+  {
+    "q": ["how to prepare for interview", "interview preparation", "placement preparation"],
+    "a": "Plan: 1) Resume + projects, 2) Basics (DSA/CS fundamentals), 3) Mock interviews, 4) Company-specific prep, 5) Clear communication practice."
+  },
+  {
+    "q": ["what is your biggest achievement", "biggest achievement", "achievement"],
+    "a": "Pick an achievement with impact: project completion, hackathon, internship result, leadership. Explain what you did and the outcome."
+  },
+  {
+    "q": ["why gap in education", "education gap", "gap year"],
+    "a": "Be honest and confident. Mention what you learned/changed: 'I used the time to improve skills, complete courses/projects, and I’m ready now.'"
+  },
+  {
+    "q": ["tell me about internship", "internship experience", "what did you do in internship"],
+    "a": "Explain role + tech + contribution + result. Example: 'Worked on X module, fixed Y bugs, improved performance by Z, collaborated via Git.'"
+  },
+  {
+    "q": ["do you have any questions", "any questions for us", "questions to interviewer"],
+    "a": "Ask smart questions: 'What does success look like in 3 months? What tech stack will I work on? What learning opportunities are available?'"
+  }
+]

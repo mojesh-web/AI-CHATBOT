@@ -1,14 +1,13 @@
-def get_intent(user_input):
-    user_input = user_input.lower()
+def get_intent(text: str) -> str:
+    t = (text or "").lower().strip()
 
-    if any(word in user_input for word in ["hi", "hello", "hey"]):
+    if any(w in t for w in ["hi", "hello", "hey", "hii"]):
         return "greeting"
-
-    elif any(word in user_input for word in ["bye", "goodbye", "exit"]):
+    if any(w in t for w in ["bye", "goodbye", "exit", "quit"]):
         return "bye"
+    if "your name" in t or "who are you" in t:
+        return "bot_name"
+    if "help" in t or "what can you do" in t:
+        return "help"
 
-    elif any(word in user_input for word in ["how", "are", "you"]):
-        return "how_are_you"
-
-    else:
-        return "unknown"
+    return "unknown"
