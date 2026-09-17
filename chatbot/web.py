@@ -32,7 +32,7 @@ def home():
             # store bot message
             chat_history.append(("Bot", bot_text))
 
-    return render_template("chat.html", chat_history=chat_history)
+    return render_template("index.html", chat_history=chat_history)
 
 
 if __name__ == "__main__":
