@@ -5,6 +5,7 @@ description = "AI Chatbot"
 requires-python = ">=3.12"
 dependencies = [
     "flask",
+    "rapidfuzz",
 ]
 
 [tool.vercel]
