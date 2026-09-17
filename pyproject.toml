@@ -1,2 +1,11 @@
+[project]
+name = "ai-chatbot"
+version = "0.1.0"
+description = "AI Chatbot"
+requires-python = ">=3.12"
+dependencies = [
+    "flask",
+]
+
 [tool.vercel]
 entrypoint = "chatbot.web:app"
